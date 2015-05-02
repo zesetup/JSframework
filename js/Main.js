@@ -2,7 +2,7 @@ var jsScriptTotalCount=4
 Main = {
 	start:function(){
 		Controller.setUserControllerEventHandler(UserController, "eventHandler")
-		myTable = new Table();
+		myTable = new Table("myTable");
 		myTable.setEventHandler(UserController, "eventHandler")
 		myTable.show()
 	}

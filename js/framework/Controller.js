@@ -2,7 +2,7 @@ Controller = {
 	userControllerObject:{},
 	userControllerMethod:"",
 	init:function(){
-		window.status="init"
+		//  some inite
 	},
 	eventHandler:function(event){
 		userControllerObject[userControllerMethod](event)
