@@ -5,7 +5,8 @@ function Table(){
 	data.header=[]
 	data.rows=[]
 	this.show =function(){
-		data = eventHandlerObject[eventHandlerMethod]()
+		// get data from a data source
+		data = eventHandlerObject[eventHandlerMethod]("table", "getDataSet")
 	}
 	this.setEventHandler = function(object, method){
 		eventHandlerObject = object

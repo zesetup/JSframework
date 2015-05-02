@@ -1,17 +1,20 @@
-jsScriptTotalCount=4
+var jsScriptTotalCount=4
 Main = {
 	start:function(){
-		Controller.setUserController(UserController, "eventHandler")
-		alert("Main.start")
+		Controller.setUserControllerEventHandler(UserController, "eventHandler")
+		myTable = new Table();
+		myTable.setEventHandler(UserController, "eventHandler")
+		myTable.show()
 	}
 }
 
-//JS scripts counter 
+// JS scripts counter 
 if(jsLoadedScripts){
 	jsLoadedScripts ++
 }else{
 	var jsLoadedScripts = 1
 }
+
 function init(){
 	if(jsScriptTotalCount==jsLoadedScripts){
 		Main.start()

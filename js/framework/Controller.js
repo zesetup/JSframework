@@ -7,7 +7,7 @@ Controller = {
 	eventHandler:function(event){
 		userControllerObject[userControllerMethod](event)
 	},
-	setUserController:function(object, method){
+	setUserControllerEventHandler:function(object, method){
 		userControllerObject = object
 		userControllerMethod = method
 	}
