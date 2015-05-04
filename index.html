@@ -3,10 +3,19 @@
         <meta charset="utf-8">
         <script type="text/javascript" src="js/framework/Controller.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/framework/Table.js" charset="utf-8"></script>
+        
         <script type="text/javascript" src="js/UserController.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/DataSource.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/model/Employee.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/model/Department.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/Main.js" charset="utf-8"></script>
 </head>
-<body>
-hi
+<body>	
+Employees:
+	<a href="javascript:void(0)" onclick="Main.showEmployees('all')">All </a> |
+	<a href="javascript:void(0)" onclick="Main.showEmployees('IT')">IT</a> |
+	<a href="javascript:void(0)" onclick="Main.showEmployees('Sales')">Sales</a> 
+	<br>
+	<div id="employeeTable"></div> 
 </body>
 </html>
