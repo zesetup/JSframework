@@ -1,32 +1,50 @@
 var jsScriptTotalCount=7
-var myTable = new Table("myTable");
 
-Main = {
-	init:function(){
-		Controller.setUserControllerEventHandler(UserController, "eventHandler")	
-		myTable.setEventHandler(UserController, "eventHandler")
-		myTable.setTargetDomId("employeeTable")
-		myTable.setFilter("department")
-	},		
-	showEmployees:function(param){
-		myTable.remove()
-		switch(param){
-		case "IT":
-			myTable.setFilter("department","IT")
-			myTable.show()			
-			break
-		case "Sales":
-			myTable.setFilter("department","Sales")
-			myTable.show()			
-			break
-		default:
-			myTable.setFilter("department", null)
+//myTable.setFilter("department")
+
+EmployeeManager  = {
+		getEmployeesDataSet:function(params){				
+			var data = DataSource.get("department", params["department"])
+			var departments = []
+			for(i=0; i<data.length; i++){
+				department = new Department(data[i].name)
+					for(j=0;j<data[i].employees.length; j++){
+						employee = new Employee(data[i].employees[j].name, data[i].employees[j].surname, data[i].employees[j].position, department)
+						department.addEmployee(employee)
+					}
+				departments[i] = department 
+			}
+			records = []
+			var c=0
+			for(i=0;i<departments.length;i++){					
+				department = departments[i] 
+				employees = department.getEmployees()
+				for(j=0;j<employees.length;j++){
+					records[c] = [employees[j].getName(), employees[j].getSurname(), employees[j].getPosition(),  department.getName()]
+					c++
+				}
+			}
+			var dataSet={
+					headers:["Name", "Surname", "Position", "Department"],
+					rows:records
+				}
+			return dataSet
+		},
+		showEmployeeTable:function(params){
+			var myTable = new Table("myTable");
+			myTable.setEventHandler(EmployeeManager, "getEmployeesDataSet")
+			myTable.setTargetDomId("employeeTable")
 			myTable.show()
-			break
-		}		
+		},
+		showEmployeeTable2:function(params){
+			alert(2)
+		}
 	}
-}
 
+
+
+EventBus.addEventHandler(EmployeeManager, "showEmployeeTable", ["employee", "showTable"])
+//EventBus.addEventHandler(EmployeeManager, "showEmployeeTable2", ["employee", "showTable"])
 
 // JS scripts counter 
 if(jsLoadedScripts){

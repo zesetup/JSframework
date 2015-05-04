@@ -1,10 +1,9 @@
 <html>
 <head>
         <meta charset="utf-8">
-        <script type="text/javascript" src="js/framework/Controller.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/framework/EventBus.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/framework/Table.js" charset="utf-8"></script>
         
-        <script type="text/javascript" src="js/UserController.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/DataSource.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/model/Employee.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/model/Department.js" charset="utf-8"></script>
@@ -12,9 +11,8 @@
 </head>
 <body>	
 Employees:
-	<a href="javascript:void(0)" onclick="Main.showEmployees('all')">All </a> |
-	<a href="javascript:void(0)" onclick="Main.showEmployees('IT')">IT</a> |
-	<a href="javascript:void(0)" onclick="Main.showEmployees('Sales')">Sales</a> 
+	<a href="javascript:void(0)" onclick="EventBus.call(['employee','showTable', {department:'all'}])">All </a> |
+
 	<br>
 	<div id="employeeTable"></div> 
 </body>
