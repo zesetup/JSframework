@@ -1,36 +1,21 @@
 DataSource = {
-	get:function(objectName, filter){
-		switch(objectName){
-		case "department":							
-			switch(filter){
-			case "IT":						
-				return [data[0]]
-				break;
-			case "Sales":						
-				return [data[1]]
-				break;
-			default:
-				return data
-				break;
-			}
-			break
-		}
+	loadDepartments:function(object){
+		return data		
 	}
 }
-
 
 var data = [
 		    {name:"IT", 
 			employees:[
-			           {name:"Federico", surname:"Gonsales", position:"Engineer"},
-			           {name:"Mike", surname:"Saldan", position:"Tester"},
-			           {name:"Leo", surname:"Sigh", position:"Architect"}
+			           {name:"Federico", surname:"Gonsales", position:"Engineer", hirenDate:"2013-01-02"},
+			           {name:"Mike", surname:"Saldan", position:"Tester", hirenDate:"2011-11-22"},
+			           {name:"Leo", surname:"Sigh", position:"Architect", hirenDate:"2001-12-12"}
 			           ] 
 		    },
 		    {name:"Sales", 
 				employees:[
-				           {name:"Sarah", surname:"Connor", position:"Manager"},
-				           {name:"Richard", surname:"Senom", position:"Specialist"}						         
+				           {name:"Sarah", surname:"Connor", position:"Manager", hirenDate:"2010-04-14"},
+				           {name:"Richard", surname:"Senom", position:"Specialist", hirenDate:"2014-05-07"}						         
 				           ] 
 			    }
 	   ]

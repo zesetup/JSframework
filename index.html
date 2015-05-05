@@ -11,8 +11,8 @@
 </head>
 <body>	
 Employees:
-	<a href="javascript:void(0)" onclick="EventBus.call(['employee','showTable', {department:'all'}])">All </a> |
-
+	<a href="javascript:void(0)" onclick="EventBus.publish(['employee','showTable'])">All</a> |
+	<a href="javascript:void(0)" onclick="EventBus.publish(['employee','showTable', {expirience:'3'} ])">Expirense>=3</a> |
 	<br>
 	<div id="employeeTable"></div> 
 </body>

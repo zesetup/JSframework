@@ -1,19 +1,15 @@
-function Table(n){
-	var eventHandlerObject={},
-	eventHandlerMethod="",
-	name,
-	targetDomId,
-	data={}
-	data.headers=[]
-	data.rows=[]
-	name=n
-	var event = {}
-	this.show =function(){
-		// get data from a data source		
-		event.source = "table"
-		event.command = "getDataSet"
-		event.callerName = name
-		data = eventHandlerObject[eventHandlerMethod](event)
+function Table(nameParam){
+	var name
+	var targetDomId
+	var data={}
+		data.headers=[]
+		data.rows=[]
+	var name=nameParam
+	var eventBus = {}
+	this.show =function(params){
+		this.remove()
+		// get data from a data source				
+		data = eventBus.publish([name, "getDataSet", params])		
 		var targetDom = document.getElementById(targetDomId)
 		
 		var tableElement = document.createElement("TABLE")
@@ -38,15 +34,11 @@ function Table(n){
 		}
 		
 		tableElement.appendChild(tbodyElement)
-		targetDom.appendChild(tableElement)
-		
+		targetDom.appendChild(tableElement)		
 		tableElement.border=1
-		
-		//alert(data.rows[1][1])
 	}
-	this.setEventHandler = function(object, method){
-		eventHandlerObject = object
-		eventHandlerMethod = method
+	this.setEventBus = function(eb){
+		eventBus = eb
 	}
 	this.setTargetDomId = function(id){
 		targetDomId = id
@@ -56,12 +48,10 @@ function Table(n){
 	}
 	this.remove = function(){
 		var targetDom = document.getElementById(targetDomId)
-		//alert(targetDom.childNodes)
 		try{
 			while (targetDom.firstChild) {
 				targetDom.removeChild(targetDom.firstChild);
 			}
-			//document.getElementsByTagName("body")[0].removeChild(targetDom.childNodes[0])
 		}catch(e){}
 	}
 }
