@@ -3,9 +3,8 @@
  * @param nameParam уникальное имя таблицы
  */
 function Table(nameParam){
-	var name
-	var targetDomId	
 	var name=nameParam
+	var targetDomId	
 	var eventBus = {}
 	/*
 	 * Показывает таблицу
