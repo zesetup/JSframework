@@ -1,9 +1,16 @@
+/*
+ * Объект-экземпляр, источник данных
+ */
 DataSource = {
-	loadDepartments:function(object){
+	/*
+	 * регистрирует подписчика события
+	 * @return  возвращает данные
+	 */
+	loadDepartments:function(){
 		return data		
 	}
 }
-
+// структура данных
 var data = [
 		    {name:"IT", 
 			employees:[

@@ -1,17 +1,28 @@
 var jsScriptTotalCount=6
-
+/*
+ * Объект-экземпляр, производит первичную инициализацию, получает данные от источника данных,
+ * создает объекты модели, на основе опроса модели формирует набор данных для визуального компонета Table
+ */
 Main  = {
+	/*
+	 * создает экземпляр визуального компонента, производит его настройку
+	 * связывает таблицу, себя и источник данных через шину событий для обмена сообщениями
+	 */
 	init:function(){
 		var myTable = new Table("myTable");
 		myTable.setEventBus(EventBus)
 		myTable.setTargetDomId("employeeTable")
-		EventBus.subscribe(myTable, "show", ['employee','showTable'])
-		EventBus.subscribe(Main, "getEmployeesDataSet", ["myTable", "getDataSet"])
-		EventBus.subscribe(DataSource, "loadDepartments", ["loadDepartments"])
+		EventBus.subscribe(myTable, "show", 'employee.showTable')
+		EventBus.subscribe(this, "getEmployeesDataSet", "myTable.getDataSet")
+		EventBus.subscribe(DataSource, "loadDepartments", "loadDepartments")
 	},
+	/*
+	 * получает данные от источника, воссоздает модель предметной области, формирует набор данных
+	 * @param params параметры для источника данных
+	 */
 	getEmployeesDataSet:function(params){
 		//var data = DataSource.get("department")
-		var data = EventBus.publish(["loadDepartments"]) 
+		var data = EventBus.publish("loadDepartments") 
 		var departments = []
 		for(i=0; i<data.length; i++){
 			department = new Department(data[i].name)
@@ -39,11 +50,11 @@ Main  = {
 							records[c] = [employees[j].getFullName(), employees[j].getPosition(), employees[j].getExperience(), department.getName()]
 							c++
 						}
-					}else{
-						records[c] = [employees[j].getFullName(), employees[j].getPosition(), employees[j].getExperience(),  department.getName()]
-						c++
-					}
-				}				
+					}					
+				}else{
+					records[c] = [employees[j].getFullName(), employees[j].getPosition(), employees[j].getExperience(),  department.getName()]
+					c++
+				}
 			}
 		}
 		var dataSet={

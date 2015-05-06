@@ -1,3 +1,7 @@
+/*
+ * Объект-конструктор работник, содержит сведения о работнике
+ */
+
 function Employee(nameParam, surnameParam, positionParam, hirenDateParam, departmentParam){
 	var name = nameParam 
 	var surname = surnameParam  

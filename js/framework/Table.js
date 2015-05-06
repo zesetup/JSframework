@@ -1,15 +1,23 @@
+/*
+ * Объект-конструктор, визуальный элемент показывающий таблицу
+ * @param nameParam уникальное имя таблицы
+ */
 function Table(nameParam){
 	var name
-	var targetDomId
-	var data={}
-		data.headers=[]
-		data.rows=[]
+	var targetDomId	
 	var name=nameParam
 	var eventBus = {}
+	/*
+	 * Показывает таблицу
+	 * @param params  параметры отображения, передаются источнику данных для таблицы
+	 */
 	this.show =function(params){
+		var data={}
+		data.headers=[]
+		data.rows=[]
 		this.remove()
 		// get data from a data source				
-		data = eventBus.publish([name, "getDataSet", params])		
+		data = eventBus.publish(name+ ".getDataSet", params)		
 		var targetDom = document.getElementById(targetDomId)
 		
 		var tableElement = document.createElement("TABLE")
@@ -37,15 +45,23 @@ function Table(nameParam){
 		targetDom.appendChild(tableElement)		
 		tableElement.border=1
 	}
+	/*
+	 * назначает шину событий 
+	 * @param eb  объект-экземпляр шины событий
+	 */
 	this.setEventBus = function(eb){
 		eventBus = eb
 	}
+	/*
+	 * назначает идентификтор элемента DOM для размещения таблицы 
+	 * @param id  идентификтор элемента DOM
+	 */
 	this.setTargetDomId = function(id){
 		targetDomId = id
 	}
-	this.setFilter = function(filterItem, filterValue){
-		event[filterItem] = filterValue
-	}
+	/*
+	 * удаляет таблицу из DOM 
+	 */
 	this.remove = function(){
 		var targetDom = document.getElementById(targetDomId)
 		try{
