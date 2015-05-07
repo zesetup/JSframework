@@ -2,11 +2,10 @@
  * Объект-конструктор работник, содержит сведения о работнике
  */
 
-function Employee(nameParam, surnameParam, positionParam, hirenDateParam, departmentParam){
+function Employee(nameParam, surnameParam, positionParam, hirenDateParam){
 	var name = nameParam 
 	var surname = surnameParam  
 	var position = positionParam
-	var department = departmentParam
 	var hirenDate = hirenDateParam 
 	this.setName = function(n){
 		name=name
@@ -20,9 +19,6 @@ function Employee(nameParam, surnameParam, positionParam, hirenDateParam, depart
 	this.setHirenDate = function(d){
 		hirenDate=d
 	}
-	this.setDepartment = function(d){
-		department=d
-	}
 	this.getName = function(){
 		return name
 	}
@@ -34,9 +30,6 @@ function Employee(nameParam, surnameParam, positionParam, hirenDateParam, depart
 	}
 	this.getHirenDate = function(){
 		return hirenDate
-	}
-	this.getDepartment = function(){
-		return department
 	}
 	this.getFullName = function(){
 		return name+" "+surname

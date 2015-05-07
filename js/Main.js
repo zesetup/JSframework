@@ -32,8 +32,7 @@ Main  = {
 					employee = new Employee(data[i].employees[j].name,
 							data[i].employees[j].surname,
 							data[i].employees[j].position,
-							hirenDate,
-							department)
+							hirenDate)
 					department.addEmployee(employee)
 				}
 			departments[i] = department 
