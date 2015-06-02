@@ -2,7 +2,7 @@ function Department(nameParam){
 	var name = nameParam 
 	var employees = [] 
 	this.setName = function(n){
-		name=name
+		name=n
 	}
 	this.addEmployee = function(e){
 		employees[employees.length] = e
