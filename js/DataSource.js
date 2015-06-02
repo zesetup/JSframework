@@ -27,8 +27,6 @@ var data = [
 			    }
 	   ]
 
-
-
 //JS scripts counter 
 if(jsLoadedScripts){
 	jsLoadedScripts ++
