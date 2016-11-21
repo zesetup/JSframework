@@ -8,24 +8,23 @@ EventBus = {
 	 * @param subscriberObject объект-экземпляр подписчика события
 	 * @param subscriberMethod метод  подписчика события для обработки сообщения
 	 */ 
-	subscribe:function(subscriberObject, subscriberMethod, Event) {
+	subscribe:function(subscriberObject, subscriberMethod, event) {
 		var subscriber = {}
 		subscriber.object = subscriberObject
 		subscriber.method = subscriberMethod
-		subscriber.event = Event 
+		subscriber.event = event 
 		this.subscribers[this.subscribers.length]=subscriber
 	},
 	/*
 	 * публикация события
-	 * @param E строка-идетификатор события
+	 * @param eventId строка-идетификатор события
 	 * @param params параметры
 	 * @return возвращает результат отработки по событию 
 	 */
-	publish:function(E, params){
-		//alert(params.expirience)
+	publish:function(eventId, params){
 		for(var i=0; i<this.subscribers.length;  i++){			
-			var Event = this.subscribers[i].event
-			if(Event===E){				
+			var event = this.subscribers[i].event
+			if(event===eventId){				
 				return this.subscribers[i].object[this.subscribers[i].method](params)
 			}			
 		}
