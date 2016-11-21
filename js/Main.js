@@ -1,3 +1,9 @@
+/**
+ * @author      zesetup <zerosetup@gmail.com>
+ * @version     1.0
+ * @since       1.0
+ */
+
 var jsScriptTotalCount=6
 /*
  * Объект-экземпляр, производит первичную инициализацию, получает данные от источника данных,
@@ -9,9 +15,7 @@ Main  = {
 	 * связывает таблицу, себя и источник данных через шину событий для обмена сообщениями
 	 */
 	init:function(){
-		var myTable = new Table("myTable");
-		myTable.setEventBus(EventBus)
-		myTable.setTargetDomId("employeeTable")
+		var myTable = new Table("myTable", EventBus, "employeeTable")
 		EventBus.subscribe(myTable, "show", 'employee.showTable')
 		EventBus.subscribe(this, "getEmployeesDataSet", "myTable.getDataSet")
 		EventBus.subscribe(DataSource, "loadDepartments", "loadDepartments")
@@ -21,7 +25,6 @@ Main  = {
 	 * @param params параметры для источника данных
 	 */
 	getEmployeesDataSet:function(params){
-		//var data = DataSource.get("department")
 		var data = EventBus.publish("loadDepartments") 
 		var departments = []
 		for(i=0; i<data.length; i++){

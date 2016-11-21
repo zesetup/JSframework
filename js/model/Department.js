@@ -1,3 +1,10 @@
+/**
+ * @author      zesetup <zerosetup@gmail.com>
+ * @version     1.0
+ * @since       1.0
+ */
+
+
 function Department(nameParam){
 	var name = nameParam 
 	var employees = [] 

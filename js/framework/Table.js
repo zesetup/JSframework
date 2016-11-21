@@ -1,16 +1,22 @@
+/**
+ * @author      zesetup <zerosetup@gmail.com>
+ * @version     1.0
+ * @since       1.0
+ */
+
 /*
  * Объект-конструктор, визуальный элемент показывающий таблицу
  * @param nameParam уникальное имя таблицы
  */
-function Table(nameParam){
-	var name=nameParam
-	var targetDomId	
-	var eventBus = {}
+function Table(nameParam, eBus, domId){
+	var name = nameParam
+	var targetDomId	= domId
+	var eventBus = eBus
 	/*
 	 * Показывает таблицу
 	 * @param params  параметры отображения, передаются источнику данных для таблицы
 	 */
-	this.show =function(params){
+	this.show = function(params){
 		var data={}
 		data.headers=[]
 		data.rows=[]
@@ -45,20 +51,6 @@ function Table(nameParam){
 		tableElement.border=1
 	}
 	/*
-	 * назначает шину событий 
-	 * @param eb  объект-экземпляр шины событий
-	 */
-	this.setEventBus = function(eb){
-		eventBus = eb
-	}
-	/*
-	 * назначает идентификтор элемента DOM для размещения таблицы 
-	 * @param id  идентификтор элемента DOM
-	 */
-	this.setTargetDomId = function(id){
-		targetDomId = id
-	}
-	/*
 	 * удаляет таблицу из DOM 
 	 */
 	this.remove = function(){
@@ -70,7 +62,6 @@ function Table(nameParam){
 		}catch(e){}
 	}
 }
-
 
 //JS scripts counter 
 if(jsLoadedScripts){

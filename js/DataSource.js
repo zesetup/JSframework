@@ -1,3 +1,9 @@
+/**
+ * @author      zesetup <zerosetup@gmail.com>
+ * @version     1.0
+ * @since       1.0
+ */
+
 /*
  * Объект-экземпляр, источник данных
  */
