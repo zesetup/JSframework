@@ -7,6 +7,8 @@
 /*
  * Объект-конструктор, визуальный элемент показывающий таблицу
  * @param nameParam уникальное имя таблицы
+ * @param eBus шина событий
+ * @param domId идентификатор узла DOM-дерева для размещения таблицы
  */
 function Table(nameParam, eBus, domId){
 	var name = nameParam
