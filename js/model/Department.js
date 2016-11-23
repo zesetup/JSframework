@@ -4,7 +4,10 @@
  * @since       1.0
  */
 
-
+/*
+ * Объект-конструктор отдел, содержит сведения о отделе
+ * @param nameParam  название отдела
+ */
 function Department(nameParam){
 	var name = nameParam 
 	var employees = [] 
@@ -20,14 +23,4 @@ function Department(nameParam){
 	this.getEmployees = function(){		
 		return employees
 	}
-	
-}
-
-
-
-//JS scripts counter 
-if(jsLoadedScripts){
-	jsLoadedScripts ++
-}else{
-	var jsLoadedScripts = 1
 }

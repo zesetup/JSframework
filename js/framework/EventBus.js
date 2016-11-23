@@ -36,10 +36,3 @@ EventBus = {
 		}
 	}
 }
-
-//JS scripts counter 
-if(jsLoadedScripts){
-	jsLoadedScripts ++
-}else{
-	var jsLoadedScripts = 1
-}

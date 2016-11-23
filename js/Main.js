@@ -4,12 +4,11 @@
  * @since       1.0
  */
 
-var jsScriptTotalCount=6
 /*
  * Объект-экземпляр, производит первичную инициализацию, получает данные от источника данных,
  * создает объекты модели, на основе опроса модели формирует набор данных для визуального компонета Table
  */
-Main  = {
+var Main  = {
 	/*
 	 * создает экземпляр визуального компонента, производит его настройку
 	 * связывает таблицу, себя и источник данных через шину событий для обмена сообщениями
@@ -66,20 +65,3 @@ Main  = {
 		return dataSet
 	}
 }
-
-
-// JS scripts counter 
-if(jsLoadedScripts){
-	jsLoadedScripts ++
-}else{
-	var jsLoadedScripts = 1
-}
-
-function init(){
-	if(jsScriptTotalCount==jsLoadedScripts){
-		Main.init()
-	}else{
-		setTimeout(function(){ init() }, 100);
-	}
-}
-setTimeout(function(){ init() }, 100);

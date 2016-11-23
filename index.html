@@ -9,7 +9,7 @@
         <script type="text/javascript" src="js/model/Department.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/Main.js" charset="utf-8"></script>
 </head>
-<body>	
+<body onload="Main.init()">	
 Employees:
 	<a href="javascript:void(0)" onclick="EventBus.publish('employee.showTable')">All</a> |
 	<a href="javascript:void(0)" onclick="EventBus.publish('employee.showTable', {expirience:'3'})">Expirense>=3</a> |

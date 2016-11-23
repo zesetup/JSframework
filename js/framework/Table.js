@@ -64,10 +64,3 @@ function Table(nameParam, eBus, domId){
 		}catch(e){}
 	}
 }
-
-//JS scripts counter 
-if(jsLoadedScripts){
-	jsLoadedScripts ++
-}else{
-	var jsLoadedScripts = 1
-}

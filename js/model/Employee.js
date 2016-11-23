@@ -7,8 +7,11 @@
 
 /*
  * Объект-конструктор работник, содержит сведения о работнике
+ * @param nameParam  имя работника
+ * @param surnameParam фамилия работника
+ * @param positionParam должность работника
+ * @param hirenDateParam дата найма работника
  */
-
 function Employee(nameParam, surnameParam, positionParam, hirenDateParam){
 	var name = nameParam 
 	var surname = surnameParam  
@@ -48,12 +51,4 @@ function Employee(nameParam, surnameParam, positionParam, hirenDateParam){
 		var diffDays = Math.round(Math.abs((hirenDate.getTime() - now.getTime())/(oneDay)))
 		return (diffDays/365).toFixed(0)
 	}
-}
-
-
-//JS scripts counter 
-if(jsLoadedScripts){
-	jsLoadedScripts ++
-}else{
-	var jsLoadedScripts = 1
 }
