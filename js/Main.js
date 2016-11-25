@@ -24,7 +24,8 @@ var Main  = {
 	 * @param params параметры для источника данных
 	 */
 	getEmployeesDataSet:function(params){
-		var data = EventBus.publish("loadDepartments") 
+		var data
+		EventBus.publish("loadDepartments", null,  function(d){ data = d })
 		var departments = []
 		for(i=0; i<data.length; i++){
 			department = new Department(data[i].name)

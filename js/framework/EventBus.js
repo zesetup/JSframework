@@ -25,13 +25,19 @@ EventBus = {
 	 * публикация события
 	 * @param eventId строка-идетификатор события
 	 * @param params параметры
+	 * @param callback метод, который будет вызван для возвращения результата отработки подписчика события
 	 * @return возвращает результат отработки по событию 
 	 */
-	publish:function(eventId, params){
+	publish:function(eventId, params, callback){
 		for(var i=0; i<this.subscribers.length;  i++){			
 			var event = this.subscribers[i].event
-			if(event===eventId){				
-				return this.subscribers[i].object[this.subscribers[i].method](params)
+			//console.log("eventId=",eventId, " callback=", typeof callback)
+			if(event===eventId){
+				if(typeof callback=='function'){
+					callback(this.subscribers[i].object[this.subscribers[i].method](params))
+				} else {
+					this.subscribers[i].object[this.subscribers[i].method](params)
+				}
 			}			
 		}
 	}

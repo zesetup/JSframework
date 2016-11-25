@@ -24,9 +24,8 @@ function Table(nameParam, eBus, domId){
 		data.rows=[]
 		this.remove()
 		// get data from a data source				
-		data = eventBus.publish(name+ ".getDataSet", params)		
+		eventBus.publish(name+ ".getDataSet", params,  function(d){ data = d})
 		var targetDom = document.getElementById(targetDomId)
-		
 		var tableElement = document.createElement("TABLE")
 		var tbodyElement = document.createElement("TBODY")
 		var trElement = document.createElement("TR")
